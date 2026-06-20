@@ -7,16 +7,11 @@ const blogSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  slug: {
+  category: {
     type: String,
     required: true,
-    unique: true,
-    trim: true,
-    lowercase: true
-  },
-  shortDescription: {
-    type: String,
-    required: true
+    enum: ['Mining', 'Equipment', 'Projects', 'Company News', 'Construction', 'General'],
+    default: 'General'
   },
   content: {
     type: String,
@@ -35,15 +30,6 @@ const blogSchema = new mongoose.Schema({
     type: String,
     enum: ['Draft', 'Published'],
     default: 'Draft'
-  },
-  views: {
-    type: Number,
-    default: 0
-  },
-  tags: [String],
-  category: {
-    type: String,
-    default: 'General'
   }
 }, {
   timestamps: true
